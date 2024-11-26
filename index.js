@@ -17,7 +17,6 @@ async function getGoldPrice() {
   const result = await axios.get(
     `https://sapi.k780.com/?app=finance.gold_price&goldid=1053&appkey=${nowapiConfig.AppKey}&sign=${nowapiConfig.Sign}&format=json`
   );
-  console.log(result);
   return result.data.result.dtList["1053"];
 }
 async function mail(messageInfo, goldInfo) {
@@ -32,9 +31,9 @@ async function mail(messageInfo, goldInfo) {
   const mailOptions = {
     to: messageInfo.mail.replaceAll("、", ","), // 接收人列表,多人用','隔开
     subject: "金价监控",
-    text: `<div>刘诗语你好呀<div>
+    html: `<div>刘诗语你好呀<div>
         <p>当前金价为${buy_price.toFixed(2)}</p>
-    `,
+        `,
   };
   await sendMail(mailOptions);
 }
