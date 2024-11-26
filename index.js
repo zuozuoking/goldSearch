@@ -54,13 +54,13 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
     html: `<div style="width: 100%; height: 300px;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; padding: 20px; box-sizing: border-box;">
         <h1 style="font-size: 36px; margin: 0;">今日特报</h1>
         <div style="background: linear-gradient(to right, rgba(255, 0, 0, 0.7), rgba(255, 165, 0, 0.7)); padding: 20px; border-radius: 8px; max-width: 80%; z-index: 2;">
-        <p style="font-size: 20px; margin: 5px 0;">今天是${weatherInfo[0].weathers[0].week}</p>
+        <p style="font-size: 20px; margin: 5px 0;">今天: ${weatherInfo[0].weathers[0].week}</p>
         <p style="font-size: 20px; margin: 5px 0;">${time('2024,1,27')}</p>
         <p style="font-size: 20px; margin: 5px 0;">天气：${weatherInfo[0].weathers[0].weather}</p>
-        <p style="font-size: 20px; margin: 5px 0;">最高温度为 ${weatherInfo[0].weathers[0].temp_day_c}℃</p>
-        <p style="font-size: 20px; margin: 5px 0;">最低温度为 ${weatherInfo[0].weathers[0].temp_night_c}℃</p>
+        <p style="font-size: 20px; margin: 5px 0;">最高温度: ${weatherInfo[0].weathers[0].temp_day_c}℃</p>
+        <p style="font-size: 20px; margin: 5px 0;">最低温度: ${weatherInfo[0].weathers[0].temp_night_c}℃</p>
         <p style="font-size: 20px; margin: 5px 0;">${weatherInfo[0].indexes[2].content}℃</p>
-        <p style="font-size: 20px; margin: 5px 0;">当前金价为 ${buy_price}元/g</p>
+        <p style="font-size: 20px; margin: 5px 0;">当前金价: ${buy_price}元/g</p>
       
     </div>
        </div>
