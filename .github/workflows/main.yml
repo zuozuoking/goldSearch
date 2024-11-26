@@ -1,4 +1,4 @@
-name: Build and Publish Node.js Package
+name: Check the gold price
 
 on:
   schedule:
