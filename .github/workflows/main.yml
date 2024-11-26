@@ -1,14 +1,14 @@
 name: Build and Publish Node.js Package
 
 on:
-  push:
-    branches:
-      - m*
+  schedule:
+  - cron:  '30 23 * * *'
+  workflow_dispatch:
 
 env:
-      PASS: ${{ secrets.PASS }}
-      APP_KEY: ${{ secrets.APP_KEY }}
-      SIGN: ${{ secrets.SIGN }}
+   PASS: ${{ secrets.PASS }}
+   APP_KEY: ${{ secrets.APP_KEY }}
+   SIGN: ${{ secrets.SIGN }}
 
 jobs:
   publish-npm:
@@ -25,5 +25,5 @@ jobs:
       - name: Install Dependency
         run: npm install
         
-      - name: Publish
+      - name: Run
         run: node index.js
