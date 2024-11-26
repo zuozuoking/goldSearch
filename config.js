@@ -1,3 +1,7 @@
+const PASS = process.env.PASS;
+const APP_KEY = process.env.APP_KEY;
+const SIGN = process.env.SIGN;
+
 module.exports = {
   mail: {
     host: "smtp.qq.com", // 主机
