@@ -2,6 +2,9 @@ const PASS = process.env.PASS;
 const SEND_MAIL = process.env.SEND_MAIL
 const APP_KEY = process.env.APP_KEY;
 const SIGN = process.env.SIGN;
+const MAIL = process.env.MAIL;
+
+console.log(MAIL)
 
 module.exports = {
   mail: {

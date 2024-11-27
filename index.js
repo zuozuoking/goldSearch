@@ -60,7 +60,7 @@ async function mail(goldInfo, weatherInfo) {
       textLucky = '乌拉拉，星期天啦，一周过完啦'
       break;
   }
-  console.log(MAIL)
+
   const mailOptions = {
     to: `${MAIL}`, // 接收人列表,多人用','隔开
     subject: "今日小事",
