@@ -8,11 +8,11 @@ on:
   workflow_dispatch: # 允许手动触发
 
 env:
-  PASS: ${{ secrets.PASS }}
-  APP_KEY: ${{ secrets.APP_KEY }}
-  SIGN: ${{ secrets.SIGN }}
-  SEND_MAIL: ${{ secrets.SEND_MAIL }}
-  MAIL: ${{ secrets.MAIL }}
+  PASS: ${{ secrets.PASS }} # 邮件账号授权码
+  SEND_MAIL: ${{ secrets.SEND_MAIL }} #自己用于发送邮件的账号
+  APP_KEY: ${{ secrets.APP_KEY }} # nowApi的AppKey
+  SIGN: ${{ secrets.SIGN }} # nowApi的Sign
+  MAIL: ${{ secrets.MAIL }} # 接收人列表,多人用','隔开
 
 jobs:
   publish-npm:

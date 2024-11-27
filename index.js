@@ -87,7 +87,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
         <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
         <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span> 元/g哦</p>
+        <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span> 元/克哦</p>
        </div>
         `,
   };
