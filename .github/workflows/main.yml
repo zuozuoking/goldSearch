@@ -11,6 +11,8 @@ env:
   PASS: ${{ secrets.PASS }}
   APP_KEY: ${{ secrets.APP_KEY }}
   SIGN: ${{ secrets.SIGN }}
+  SEND_MAIL: ${{ secrets.SEND_MAIL }}
+  MAIL: ${{ secrets.MAIL }}
 
 jobs:
   publish-npm:
