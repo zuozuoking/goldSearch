@@ -1,6 +1,8 @@
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
+const MAIL = process.env.MAIL;
+
 
 async function getTableDate() {
   return new Promise((resolve) => {
@@ -8,7 +10,7 @@ async function getTableDate() {
       type: "金价监控",
       minVal: "550",
       maxVal: "580",
-      mail: "304160997@qq.com",
+      mail: MAIL, // 接收人列表,多人用','隔开
     });
   });
 }
@@ -76,7 +78,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
       break;
   }
   const mailOptions = {
-    to: messageInfo.mail.replaceAll("、", ","), // 接收人列表,多人用','隔开
+    to: messageInfo.mail, // 接收人列表,多人用','隔开
     subject: "今日小事-文",
     html: `<div style="width: 500px; height: auto;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;position: relative; box-sizing: border-box;color: #555555;overflow: hidden;margin: 10px auto;padding: 15px 15px 15px 35px;border-radius: 10px;box-shadow: 6px 0 12px -5px rgb(253, 223, 234), -6px 0 12px -5px rgb(215, 240, 243);background-color: #FFDEE9;background-image: linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);background-image: -webkit-linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);">
         <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
