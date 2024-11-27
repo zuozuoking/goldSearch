@@ -12,7 +12,7 @@ const sendMail = (options) => {
     // 发送邮件
     smtpTransport.sendMail(mailOptions, function (error, response) {
       if (error) {
-        console.error("发送邮件失败：", error);
+        console.error("发送邮件失败：", error, MAIL, process.env.SEND_MAIL);
       } else {
         console.log("邮件发送成功", MAIL);
       }
