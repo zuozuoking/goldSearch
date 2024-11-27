@@ -79,7 +79,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
   }
   const mailOptions = {
     to: messageInfo.mail, // 接收人列表,多人用','隔开
-    subject: "今日小事-文",
+    subject: "今日小事",
     html: `<div style="width: 500px; height: auto;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;position: relative; box-sizing: border-box;color: #555555;overflow: hidden;margin: 10px auto;padding: 15px 15px 15px 35px;border-radius: 10px;box-shadow: 6px 0 12px -5px rgb(253, 223, 234), -6px 0 12px -5px rgb(215, 240, 243);background-color: #FFDEE9;background-image: linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);background-image: -webkit-linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);">
         <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${textLucky}</span></p>
@@ -88,7 +88,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
         <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
         <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">当前金价:<span style="color:${color[getRandomNumber()]}">${buy_price}</span>元/g</p>
+        <p style="font-size: 16px; margin: 5px 0;">今天的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span>元/g 哦</p>
        </div>
         `,
   };
