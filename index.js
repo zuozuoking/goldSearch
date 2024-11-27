@@ -2,18 +2,8 @@ const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
 const MAIL = process.env.MAIL;
+const cityIds = 101250106
 
-
-async function getTableDate() {
-  return new Promise((resolve) => {
-    resolve({
-      type: "金价监控",
-      minVal: "550",
-      maxVal: "580",
-      mail: `${MAIL}`, // 接收人列表,多人用','隔开
-    });
-  });
-}
 //获取黄金交易所今日金价
 async function getGoldPrice() {
   const result = await axios.get(
@@ -23,7 +13,7 @@ async function getGoldPrice() {
 }
 
 async function getWeather2() {
-  const result = await axios.get(`http://aider.meizu.com/app/weather/listWeather?cityIds=101250106`)
+  const result = await axios.get(`http://aider.meizu.com/app/weather/listWeather?cityIds=${cityIds}`)
   return result.data.value
 }
 
@@ -43,15 +33,9 @@ function getRandomNumber() {
 
 const color = ['#23C343', '#0DA5AA', '#3491FA', '#FF7D00', '#E13EDB', '#F754A8', '#9FDB1D', '#AFF0B5', '#F77234', '#DDBEF6']
 
-async function mail(messageInfo, goldInfo, weatherInfo) {
-  let { minVal = -Infinity, maxVal = Infinity } = messageInfo;
+async function mail(goldInfo, weatherInfo) {
   let { buy_price } = goldInfo;
-  minVal = parseFloat(minVal);
-  maxVal = parseFloat(maxVal);
   buy_price = parseFloat(buy_price);
-  // if (minVal < buy_price && maxVal > buy_price) {
-  //   return;
-  // }
   let textLucky;
   switch (weatherInfo[0].weathers[0].week) {
     case '星期一':
@@ -77,7 +61,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
       break;
   }
   const mailOptions = {
-    to: messageInfo.mail, // 接收人列表,多人用','隔开
+    to: `${MAIL}`, // 接收人列表,多人用','隔开
     subject: "今日小事",
     html: `<div style="width: 500px; height: auto;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;position: relative; box-sizing: border-box;color: #555555;overflow: hidden;margin: 10px auto;padding: 15px 15px 15px 35px;border-radius: 10px;box-shadow: 6px 0 12px -5px rgb(253, 223, 234), -6px 0 12px -5px rgb(215, 240, 243);background-color: #FFDEE9;background-image: linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);background-image: -webkit-linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);">
         <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
@@ -94,9 +78,9 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
   await sendMail(mailOptions);
 }
 const main = async () => {
-  const reqList = [getGoldPrice(), getTableDate(), getWeather2()];
-  const [goldInfo, messageInfo, weatherInfo] = await Promise.all(reqList);
-  await mail(messageInfo, goldInfo, weatherInfo);
+  const reqList = [getGoldPrice(), getWeather2()];
+  const [goldInfo, weatherInfo] = await Promise.all(reqList);
+  await mail(goldInfo, weatherInfo);
   process.exit(0);
 };
 
