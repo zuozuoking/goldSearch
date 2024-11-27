@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
 const { mail } = require("./config.js");
-const MAIL = process.env.MAIL;
 
 const smtpTransport = nodemailer.createTransport(mail);
 const sendMail = (options) => {
@@ -12,9 +11,9 @@ const sendMail = (options) => {
     // 发送邮件
     smtpTransport.sendMail(mailOptions, function (error, response) {
       if (error) {
-        console.error("发送邮件失败：", error, MAIL, process.env.SEND_MAIL);
+        console.error("发送邮件失败：", error);
       } else {
-        console.log("邮件发送成功", MAIL);
+        console.log("邮件发送成功");
       }
       smtpTransport.close(); // 发送完成关闭连接池
       resolve(true);
