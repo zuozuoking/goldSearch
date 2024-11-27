@@ -1,7 +1,7 @@
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
-const MAIL = process.env.MAIL;
+const MAIL = '304160997@qq.com,3239248518@qq.com';
 const cityIds = 101250106
 
 //获取黄金交易所今日金价
