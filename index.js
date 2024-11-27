@@ -28,12 +28,11 @@ async function getWeather2() {
 }
 
 function time(futimg, now) {
-  var nowtime = new Date(now).getTime(); // 现在时间转换为时间戳
-  var futruetime = new Date(futimg).getTime(); // 未来时间转换为时间戳
-  var msec = nowtime - futruetime; // 毫秒 未来时间-现在时间
-  var time = (msec / 1000);  // 毫秒/1000
-  var day = parseInt(time / 86400); // 天  24*60*60*1000 
-  console.log(now, 'nowtime')
+  var nowtime = new Date(now).getTime();
+  var futruetime = new Date(futimg).getTime();
+  var msec = nowtime - futruetime;
+  var time = (msec / 1000);
+  var day = parseInt(time / 86400);
   return "我们已经在一起：" + day + "天啦"
 }
 
