@@ -10,7 +10,7 @@ async function getTableDate() {
       type: "金价监控",
       minVal: "550",
       maxVal: "580",
-      mail: MAIL, // 接收人列表,多人用','隔开
+      mail: `${MAIL}`, // 接收人列表,多人用','隔开
     });
   });
 }
