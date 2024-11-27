@@ -1,9 +1,11 @@
 name: Check the gold price
 
+# - cron: "20 0 * * *"  # 每天 00:20 自动执行
+
 on:
   schedule:
-    - cron: "20 0 * * *"
-  workflow_dispatch:
+    - cron: "30 23 * * *" # 每天 23:30 自动执行
+  workflow_dispatch: # 允许手动触发
 
 env:
   PASS: ${{ secrets.PASS }}
