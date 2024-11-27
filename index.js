@@ -42,7 +42,7 @@ function getRandomNumber() {
   return Math.floor(Math.random() * 10);
 }
 
-const color = ['#23C343', '#0DA5AA', '#3491FA', '#FF7D00', '#E13EDB', '#F754A8', '#9FDB1D', '#FBE842', '#F77234', '#DDBEF6']
+const color = ['#23C343', '#0DA5AA', '#3491FA', '#FF7D00', '#E13EDB', '#F754A8', '#9FDB1D', '#AFF0B5', '#F77234', '#DDBEF6']
 
 async function mail(messageInfo, goldInfo, weatherInfo) {
   let { minVal = -Infinity, maxVal = Infinity } = messageInfo;
@@ -50,9 +50,9 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
   minVal = parseFloat(minVal);
   maxVal = parseFloat(maxVal);
   buy_price = parseFloat(buy_price);
-  if (minVal < buy_price && maxVal > buy_price) {
-    return;
-  }
+  // if (minVal < buy_price && maxVal > buy_price) {
+  //   return;
+  // }
   let textLucky;
   switch (weatherInfo[0].weathers[0].week) {
     case '星期一':
@@ -88,7 +88,7 @@ async function mail(messageInfo, goldInfo, weatherInfo) {
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
         <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
         <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">今天的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span>元/g 哦</p>
+        <p style="font-size: 16px; margin: 5px 0;">今天的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span> 元/g哦</p>
        </div>
         `,
   };
