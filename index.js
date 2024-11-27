@@ -1,3 +1,5 @@
+import cityCode from './cityCode'
+
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
@@ -60,6 +62,7 @@ async function mail(goldInfo, weatherInfo) {
       textLucky = '乌拉拉，星期天啦，一周过完啦'
       break;
   }
+  console.log(MAIL)
   const mailOptions = {
     to: `${MAIL}`, // 接收人列表,多人用','隔开
     subject: "今日小事",
@@ -71,7 +74,7 @@ async function mail(goldInfo, weatherInfo) {
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
         <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
         <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:${color[getRandomNumber()]}">${buy_price}</span> 元/克哦</p>
+        <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:#F9CC45}">${buy_price}</span> 元/克哦</p>
        </div>
         `,
   };
