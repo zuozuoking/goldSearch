@@ -6,10 +6,13 @@ const cityIds = 101250106
 
 //获取黄金交易所今日金价
 async function getGoldPrice() {
-  const result = await axios.get(
-    `https://sapi.k780.com/?app=finance.gold_price&goldid=1053&appkey=${nowapiConfig.AppKey}&sign=${nowapiConfig.Sign}&format=json`
-  );
-  return result.data.result.dtList["1053"];
+  // const result = await axios.get(
+  //   `https://sapi.k780.com/?app=finance.gold_price&goldid=1053&appkey=${nowapiConfig.AppKey}&sign=${nowapiConfig.Sign}&format=json`
+  // );
+  // return result.data.result.dtList["1053"];
+  return {
+    buy_price: 100
+  }
 }
 
 async function getWeather2() {
