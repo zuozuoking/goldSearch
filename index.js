@@ -1,5 +1,3 @@
-import cityCode from './cityCode'
-
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
