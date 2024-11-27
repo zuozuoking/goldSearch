@@ -80,7 +80,7 @@ async function mail(goldInfo, weatherInfo) {
       textLucky = '乌拉拉，星期天啦，一周过完啦'
       break;
   }
-  if (MAIL.length > 1) {
+  if (MAIL.length > 0) {
     MAIL.forEach(async (v) => {
       await sendMail(mailOptions(v, weatherInfo, buy_price, textLucky));
     })
