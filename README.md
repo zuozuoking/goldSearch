@@ -11,3 +11,5 @@
 
 在 Settings 里面 注册
 ![Alt text](image.png)
+
+部署流程： https://blog.csdn.net/m0_72642282/article/details/144140200?spm=1001.2014.3001.5502

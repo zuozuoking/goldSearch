@@ -77,10 +77,13 @@ async function mail(goldInfo, weatherInfo) {
   <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${textLucky}</span></p>
   <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${time(process.env.FIRST_DAY, weatherInfo[0].weathers[0].date)}</span></p>
   ${birthdayHtml()}   
-  <p style="font-size: 16px; margin: 5px 0;">天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].weather} </span></p>
-  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
+  <p style="font-size: 16px; margin: 5px 0;">实时天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.temp}</span>℃ <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.weather}</span></p>
+  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.wD}${weatherInfo[0].realtime.wS}</span>|湿度<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.sD}%</span></p>
   <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
   <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
+
+  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
+  
   <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:#F9CC45">${buy_price}</span> 元/克哦</p>
  </div>
   `
