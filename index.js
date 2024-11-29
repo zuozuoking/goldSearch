@@ -3,8 +3,8 @@ const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
 const MAIL = `${process.env.MAIL}`;
-const NAME = `${process.env.NAME.split(',')}`
-const BIRTHDAY = `${process.env.BIRTHDAY.split(',')}`
+const NAME = process.env.NAME.split(',')
+const BIRTHDAY = process.env.BIRTHDAY.split(',')
 const cityIds = 101250106
 
 //获取黄金交易所今日金价
