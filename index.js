@@ -1,3 +1,4 @@
+import { getNextLunarBirthday } from './birthday'
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
@@ -68,6 +69,8 @@ async function mail(goldInfo, weatherInfo) {
         <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${textLucky}</span></p>
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${time('2024,1,27', weatherInfo[0].weathers[0].date)}</span></p>
+        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${getNextLunarBirthday('1998-11-29', 0, weatherInfo[0].weathers[0].date, '超级无敌帅气的左左')}</span></p>
+        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${getNextLunarBirthday('2004-04-25', 0, weatherInfo[0].weathers[0].date, '超级温柔可爱的诗语')}</span></p>
         <p style="font-size: 16px; margin: 5px 0;">天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].weather} </span></p>
         <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
         <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
