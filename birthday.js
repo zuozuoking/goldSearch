@@ -14,7 +14,7 @@ const getDateNum = (data, year) => {
  * @param {*} name    
  * @returns 
  */
-export function getNextLunarBirthday(birthDate, type, nowDate, name) {
+function getNextLunarBirthday(birthDate, type, nowDate, name) {
   const today = new Date(nowDate).getTime(); // 获取当前日期
   const currentYear = new Date(nowDate).getFullYear()
   let currentBirthDate = getDateNum(birthDate, currentYear)
@@ -43,3 +43,8 @@ export function getNextLunarBirthday(birthDate, type, nowDate, name) {
 
 // 调用方法
 // console.log(getNextLunarBirthday('1998-1-27', 0, '2024-11-29', '宝宝'))
+
+
+module.exports = {
+  getNextLunarBirthday
+}

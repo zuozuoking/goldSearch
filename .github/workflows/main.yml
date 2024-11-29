@@ -13,6 +13,8 @@ env:
   APP_KEY: ${{ secrets.APP_KEY }} # nowApi的AppKey
   SIGN: ${{ secrets.SIGN }} # nowApi的Sign
   MAIL: ${{ secrets.MAIL }} # 接收人列表,多人用','隔开
+  NAME: ${{ secrets.NAME }}
+  BIRTHDAY: ${{ secrets.BIRTHDAY }}
 
 jobs:
   publish-npm:

@@ -1,8 +1,10 @@
-import { getNextLunarBirthday } from './birthday'
+const { getNextLunarBirthday } = require("./birthday.js");
 const axios = require("axios");
 const sendMail = require("./mail.js");
 const { nowapiConfig } = require("./config.js");
 const MAIL = `${process.env.MAIL}`;
+const NAME = `${process.env.NAME.split(',')}`
+const BIRTHDAY = `${process.env.BIRTHDAY.split(',')}`
 const cityIds = 101250106
 
 //获取黄金交易所今日金价
@@ -62,22 +64,31 @@ async function mail(goldInfo, weatherInfo) {
       break;
   }
 
+  const birthdayHtml = () => {
+    let html = ''
+    NAME.forEach((item, index) => {
+      html += `<p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${getNextLunarBirthday(BIRTHDAY[index].replace('r', ''), BIRTHDAY[index].includes('r') ? 1 : 0, weatherInfo[0].weathers[0].date, item)}</span></p>`
+    })
+    return html
+  }
+
+  const html = `<div style="width: 500px; height: auto;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;position: relative; box-sizing: border-box;color: #555555;overflow: hidden;margin: 10px auto;padding: 15px 15px 15px 35px;border-radius: 10px;box-shadow: 6px 0 12px -5px rgb(253, 223, 234), -6px 0 12px -5px rgb(215, 240, 243);background-color: #FFDEE9;background-image: linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);background-image: -webkit-linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);">
+  <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
+  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${textLucky}</span></p>
+  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${time('2024,1,27', weatherInfo[0].weathers[0].date)}</span></p>
+  ${birthdayHtml()}   
+  <p style="font-size: 16px; margin: 5px 0;">天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].weather} </span></p>
+  <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
+  <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
+  <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
+  <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:#F9CC45">${buy_price}</span> 元/克哦</p>
+ </div>
+  `
+
   const mailOptions = {
     to: `${MAIL}`, // 接收人列表,多人用','隔开
     subject: "早安，新的一天",
-    html: `<div style="width: 500px; height: auto;display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;position: relative; box-sizing: border-box;color: #555555;overflow: hidden;margin: 10px auto;padding: 15px 15px 15px 35px;border-radius: 10px;box-shadow: 6px 0 12px -5px rgb(253, 223, 234), -6px 0 12px -5px rgb(215, 240, 243);background-color: #FFDEE9;background-image: linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);background-image: -webkit-linear-gradient(0deg,#ffdee9c4 0%,#b5fffc8f 100%);">
-        <p style="font-size: 16px; margin: 5px 0;">今天是<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].week}</span></p>
-        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${textLucky}</span></p>
-        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${time('2024,1,27', weatherInfo[0].weathers[0].date)}</span></p>
-        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${getNextLunarBirthday('1998-11-29', 0, weatherInfo[0].weathers[0].date, '超级无敌帅气的左左')}</span></p>
-        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${getNextLunarBirthday('2004-04-25', 0, weatherInfo[0].weathers[0].date, '超级温柔可爱的诗语')}</span></p>
-        <p style="font-size: 16px; margin: 5px 0;">天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].weather} </span></p>
-        <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
-        <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
-        <p style="font-size: 16px; margin: 5px 0;">现在实时的金价是 <span style="color:#F9CC45">${buy_price}</span> 元/克哦</p>
-       </div>
-        `,
+    html: html,
   };
   await sendMail(mailOptions);
 }
