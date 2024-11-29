@@ -25,7 +25,7 @@ function getNextLunarBirthday(birthDate, type, nowDate, name) {
     currentBirthDate = new Date(currentBirthDate.join('-')).getTime()
   }
   if (currentBirthDate === today) {
-    return `祝${name}生日快乐`;
+    return `祝${name}生日快乐！`;
   }
   if (currentBirthDate < today) {
     if (type) {
