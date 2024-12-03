@@ -79,8 +79,8 @@ async function mail(goldInfo, weatherInfo) {
   ${birthdayHtml()}   
   <p style="font-size: 16px; margin: 5px 0;">实时天气：<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.temp}</span>℃ <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.weather}</span></p>
   <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.wD}${weatherInfo[0].realtime.wS}</span>|湿度<span style="color:${color[getRandomNumber()]}">${weatherInfo[0].realtime.sD}%</span></p>
-  <p style="font-size: 16px; margin: 5px 0;">最高温度: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].temp_day_c} </span>℃</p>
-  <p style="font-size: 16px; margin: 5px 0;">最低温度:<span style="color:${color[getRandomNumber()]}"> ${weatherInfo[0].weathers[0].temp_night_c} </span>℃</p>
+  <p style="font-size: 16px; margin: 5px 0;">今天: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[0].weather} ${weatherInfo[0].weathers[0].temp_day_c}/${weatherInfo[0].weathers[0].temp_night_c}</span>℃</p>
+  <p style="font-size: 16px; margin: 5px 0;">明天: <span style="color:${color[getRandomNumber()]}">${weatherInfo[0].weathers[1].weather} ${weatherInfo[0].weathers[1].temp_day_c}/${weatherInfo[0].weathers[1].temp_night_c}</span>℃</p>
 
   <p style="font-size: 16px; margin: 5px 0;"><span style="color:${color[getRandomNumber()]}">${weatherInfo[0].indexes[2].content} </span></p>
   
