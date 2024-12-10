@@ -26,6 +26,9 @@ function time(futimg, now) {
   var msec = nowtime - futruetime;
   var time = (msec / 1000);
   var day = parseInt(time / 86400);
+  if (Math.floor(day / 365) === day / 365) {
+    return "今天是我们的" + (day / 365) + "周年纪念日，" + (day / 365) + "周年快乐！"
+  }
   return "我们已经在一起：" + day + "天啦"
 }
 
