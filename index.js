@@ -93,7 +93,7 @@ async function mail(goldInfo, weatherInfo) {
 
   const mailOptions = {
     to: `${MAIL}`, // 接收人列表,多人用','隔开
-    subject: "早安，新的一天",
+    subject: "亲爱的主人，早安",
     html: html,
   };
   await sendMail(mailOptions);
